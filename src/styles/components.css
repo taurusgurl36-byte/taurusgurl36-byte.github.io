@@ -1,64 +1,519 @@
 
+/* Supplemental content styles; original transition and animation CSS is retained. */
+
+.profile-hero {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+.profile-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.profile-identity {
+  min-width: 0;
+}
+
+.profile-identity h1 {
+  color: var(--primary);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.profile-identity p {
+  margin-top: 10px;
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.profile-avatar {
+  display: block;
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.profile-details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.profile-details dt {
+  margin-bottom: 8px;
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.profile-details dd {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: var(--primary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.profile-details svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--secondary);
+}
+
+.profile-details a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-underline-offset: 4px;
+}
+
+.profile-details a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.profile-bio {
+  margin-top: 32px;
+  color: var(--secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.profile-bio p + p {
+  margin-top: 14px;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.profile-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out,
+    background-color 180ms ease-out,
+    border-color 180ms ease-out;
+}
+
+.profile-social-link svg,
+.profile-social-logo {
+  flex-shrink: 0;
+}
+
+.profile-social-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-social-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 6%, var(--bg));
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 15%, transparent);
+  }
+}
+
+.profile-social-link:active {
+  transform: scale(0.96);
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-social-link,
+  .profile-social-link:hover,
+  .profile-social-link:active {
+    transform: none;
+    transition: none;
+  }
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+  list-style: none;
+}
+
+.skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--secondary);
+  font-size: 12px;
+  line-height: 1.5;
+  transition:
+    border-color 150ms ease-out,
+    color 150ms ease-out;
+}
+
+.skill-item:hover {
+  border-color: var(--accent);
+  color: var(--primary);
+}
+
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  color: var(--skill-color);
+  background: var(--skill-background, color-mix(in srgb, var(--skill-color) 12%, var(--bg)));
+}
+
+.skill-mark {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.skill-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.profile-social-link:focus-visible,
+.profile-details a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .profile-links {
+    gap: 8px;
+  }
+
+  .profile-social-link {
+    gap: 6px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .profile-social-link svg,
+  .profile-social-logo {
+    width: 20px;
+    height: 20px;
+  }
+
+  .profile-hero {
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .profile-heading {
+    gap: 16px;
+  }
+
+  .profile-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+  }
+
+  .profile-identity p {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .profile-details {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .profile-details dd {
+    gap: 6px;
+    font-size: 13px;
+  }
+
+  .profile-bio {
+    margin-top: 28px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-heading {
+    gap: 12px;
+  }
+
+  .profile-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .profile-identity h1 {
+    font-size: 24px;
+  }
+
+  .profile-identity p {
+    font-size: 13px;
+  }
+
+  .profile-details {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+.responsibilities {
+  list-style: disc;
+  padding-left: 1rem;
+}
+
+.responsibilities li + li {
+  margin-top: 0.35rem;
+}
+
+.certificate-card {
+  display: block;
+  height: 100%;
+}
+
+.certificate-photo-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--primary) 4%, var(--bg));
+}
+
+.certificate-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-out;
+}
+
+.certificate-card:hover .certificate-photo {
+  transform: translateY(-2px);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-style: dashed;
+  transform: scale(1);
+  transition:
+    transform 200ms ease-out,
+    border-color 200ms ease-out;
+}
+
+.project-card[data-pressed="true"] {
+  transform: scale(1.02);
+  border-color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+}
+
+.project-role {
+  margin-top: 0.35rem;
+  color: var(--secondary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.project-description {
+  line-height: 1.65;
+}
+
+.project-tags {
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.project-photo {
+  aspect-ratio: 4 / 3;
+  flex-shrink: 0;
+  background: color-mix(in srgb, var(--primary) 4%, var(--bg));
+}
+
+.project-card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.project-card-footer button {
+  min-height: 44px;
+}
+
+.resume-page-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.resume-page-canvas + .resume-page-canvas {
+  margin-top: 1.5rem;
+}
+
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 72px 24px;
+  background: var(--viewer-overlay);
+  backdrop-filter: blur(3px);
+}
+
+.lightbox-dialog {
+  --preview-height: calc(100vh - 144px);
+  --preview-height: calc(100dvh - 144px);
+  position: relative;
+  width: min(100%, 1100px, calc(var(--preview-height) * var(--image-ratio, 1.3333)));
+  aspect-ratio: var(--image-ratio, 1.3333);
+}
+
+.lightbox-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -56px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--primary);
+  cursor: pointer;
+  transition: background-color 150ms ease-out;
+}
+
+.lightbox-close:hover {
+  background: color-mix(in srgb, var(--primary) 8%, var(--bg));
+}
+
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .lightbox-backdrop {
+    padding: max(72px, env(safe-area-inset-top)) 12px max(72px, env(safe-area-inset-bottom));
+  }
+}
+
 /* =========================================
-   LIGHT MODE: BLACK BORDERS AND OUTLINES
+   LIGHT MODE: DARKER, CLEARER TEXT
    ========================================= */
 
-/* Profile picture */
-html:not(.dark) .app-content .profile-avatar {
-  border-color: #000000 !important;
+html:not(.dark) .app-content h1,
+html:not(.dark) .app-content h2,
+html:not(.dark) .app-content h3,
+html:not(.dark) .app-content h4 {
+  color: #000000 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  -webkit-text-fill-color: #000000;
+  text-shadow: none;
 }
 
-/* Social buttons */
+html:not(.dark) .app-content .profile-identity p,
+html:not(.dark) .app-content .profile-details dd,
+html:not(.dark) .app-content .profile-details dt,
+html:not(.dark) .app-content .profile-bio,
+html:not(.dark) .app-content .project-role,
+html:not(.dark) .app-content .project-description,
+html:not(.dark) .app-content .skill-item,
+html:not(.dark) .app-content .skill-label,
+html:not(.dark) .app-content .responsibilities,
+html:not(.dark) .app-content .responsibilities li {
+  color: #111111;
+  opacity: 1;
+  filter: none;
+  -webkit-text-fill-color: #111111;
+}
+
 html:not(.dark) .app-content .profile-social-link {
-  border-color: #000000 !important;
+  color: #000000;
 }
 
-/* Skill boxes */
-html:not(.dark) .app-content .skill-item {
-  border-color: #000000 !important;
-}
-
-/* Project boxes */
-html:not(.dark) .app-content .project-card {
-  border-color: #000000 !important;
-}
-
-/* Certificate images and frames */
-html:not(.dark) .app-content .certificate-photo-frame,
-html:not(.dark) .app-content .certificate-photo {
-  border-color: #000000 !important;
-}
-
-/* Resume border */
-html:not(.dark) .app-content .resume-page-canvas {
-  border-color: #000000 !important;
-}
-
-/* Circular close button */
-html:not(.dark) .app-content .lightbox-close {
-  border-color: #000000 !important;
-}
-
-/* Form boxes */
-html:not(.dark) .app-content input,
-html:not(.dark) .app-content textarea,
-html:not(.dark) .app-content select {
-  border-color: #000000 !important;
-}
-
-/* Horizontal lines */
-html:not(.dark) .app-content hr {
-  border-color: #000000 !important;
-}
-
-/* Other cards, circles, and bordered elements */
-html:not(.dark) .app-content [class*="card"],
-html:not(.dark) .app-content [class*="circle"] {
-  border-color: #000000 !important;
-}
-
-/* Keyboard focus outline */
-html:not(.dark) .app-content .profile-social-link:focus-visible,
-html:not(.dark) .app-content .profile-details a:focus-visible {
-  outline-color: #000000 !important;
+html:not(.dark) .app-content .project-tags {
+  color: #111111;
 }
