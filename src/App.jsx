@@ -1,5 +1,11 @@
+
 import { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider, Outlet, ScrollRestoration } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  ScrollRestoration,
+} from "react-router-dom";
 import { MotionConfig } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeContext";
 import Navbar from "./components/Navbar";
@@ -11,19 +17,53 @@ import ExperiencePage from "./pages/ExperiencePage";
 import StackPage from "./pages/StackPage";
 import CertificationsPage from "./pages/CertificationsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+
 const ResumePage = lazy(() => import("./pages/ResumePage"));
 
-// Root Layout wrapping theme provider and scroll restoration
+// Root Layout
 function RootLayout() {
   return (
     <ThemeProvider>
-      <Outlet />
+      <div className="video-background" aria-hidden="true">
+        <video
+          className="light-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source
+            src="/assets/backgrounds/light-background.mp4"
+            type="video/mp4"
+          />
+        </video>
+
+        <video
+          className="dark-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        >
+          <source
+            src="/assets/backgrounds/dark-background.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div className="app-content">
+        <Outlet />
+      </div>
+
       <ScrollRestoration />
     </ThemeProvider>
   );
 }
 
-// Subpage Layout including top navigation bar
+// Subpage Layout
 function SubPageLayout() {
   return (
     <>
@@ -35,7 +75,7 @@ function SubPageLayout() {
   );
 }
 
-// Application Router Configuration
+// Application Router
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
