@@ -1,3 +1,4 @@
+
 import { useRef, useState, useEffect } from "react";
 
 const CELL_SIZE_DESKTOP = 48;
@@ -26,22 +27,26 @@ export default function BackgroundGrid({ children }) {
     rows: 0,
   });
 
-  // Responsive grid dimension calculation
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
     const observer = new ResizeObserver(() => {
       const { clientWidth, clientHeight } = el;
-      const size = clientWidth < MOBILE_BREAKPOINT ? CELL_SIZE_MOBILE : CELL_SIZE_DESKTOP;
+      const size =
+        clientWidth < MOBILE_BREAKPOINT
+          ? CELL_SIZE_MOBILE
+          : CELL_SIZE_DESKTOP;
+
       let cols = Math.ceil(clientWidth / size) + 1;
       if (cols % 2 === 0) cols += 1;
+
       const rows = Math.ceil((clientHeight * HEIGHT_RATIO) / size);
 
       setDimensions((prev) =>
         prev.size === size && prev.cols === cols && prev.rows === rows
           ? prev
-          : { size, cols, rows },
+          : { size, cols, rows }
       );
     });
 
@@ -49,7 +54,6 @@ export default function BackgroundGrid({ children }) {
     return () => observer.disconnect();
   }, []);
 
-  // Ripple click and hover wave interactions
   useEffect(() => {
     const container = containerRef.current;
     const grid = gridRef.current;
@@ -62,11 +66,11 @@ export default function BackgroundGrid({ children }) {
       const rect = grid.getBoundingClientRect();
       const col = Math.floor((e.clientX - rect.left) / size);
       const row = Math.floor((e.clientY - rect.top) / size);
+
       if (col < 0 || col >= cols || row < 0 || row >= rows) return null;
       return { row, col };
     }
 
-    // Click wave animation
     function handleClick(e) {
       const coords = getCoords(e);
       if (!coords) return;
@@ -84,6 +88,7 @@ export default function BackgroundGrid({ children }) {
 
           const opacity = Math.max(4, PEAK_OPACITY - dist * FALLOFF);
           const cellIndex = r * cols + c;
+
           if (cells[cellIndex]) {
             cells[cellIndex].animate(
               [
@@ -91,30 +96,29 @@ export default function BackgroundGrid({ children }) {
                 { backgroundColor: getAccentColor(opacity), offset: 0.35 },
                 { backgroundColor: getAccentColor(0) },
               ],
-              {
-                duration: DURATION,
-                delay: dist * WAVE_DELAY,
-              },
+              { duration: DURATION, delay: dist * WAVE_DELAY }
             );
           }
         }
       }
     }
 
-    // Pointer hover trail animation
     function handlePointerMove(e) {
       if (e.pointerType === "touch") return;
+
       const coords = getCoords(e);
       const idx = coords ? coords.row * cols + coords.col : -1;
+
       if (idx !== lastHoveredIndex) {
         lastHoveredIndex = idx;
+
         if (idx >= 0 && grid.children[idx]) {
           grid.children[idx].animate(
             [
               { backgroundColor: getAccentColor(HOVER_OPACITY) },
               { backgroundColor: getAccentColor(0) },
             ],
-            { duration: HOVER_DURATION, easing: "ease-out" },
+            { duration: HOVER_DURATION, easing: "ease-out" }
           );
         }
       }
@@ -122,6 +126,7 @@ export default function BackgroundGrid({ children }) {
 
     container.addEventListener("click", handleClick);
     container.addEventListener("pointermove", handlePointerMove);
+
     return () => {
       container.removeEventListener("click", handleClick);
       container.removeEventListener("pointermove", handlePointerMove);
@@ -129,7 +134,16 @@ export default function BackgroundGrid({ children }) {
   }, [dimensions]);
 
   return (
-    <div ref={containerRef} className="relative isolate w-full overflow-hidden">
+    <div
+      ref={containerRef}
+      className="relative isolate w-full overflow-hidden"
+      style={{
+        backgroundImage: "url('/jasmenportfolio/assets/background.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div
         ref={gridRef}
         aria-hidden="true"
@@ -142,9 +156,12 @@ export default function BackgroundGrid({ children }) {
           WebkitMaskImage: MASK_GRADIENT,
         }}
       >
-        {Array.from({ length: dimensions.cols * dimensions.rows }, (_, i) => (
-          <div key={i} className="border-r border-b opacity-40" />
-        ))}
+        {Array.from(
+          { length: dimensions.cols * dimensions.rows },
+          (_, i) => (
+            <div key={i} className="border-r border-b opacity-40" />
+          )
+        )}
       </div>
       {children}
     </div>
