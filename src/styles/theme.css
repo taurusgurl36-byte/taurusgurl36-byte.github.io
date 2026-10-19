@@ -1,11 +1,11 @@
 :root {
-  --bg: #0c0c0f;
-  --primary: #ffffff;
-  --secondary: #a3a3a3;
-  --tertiary: #737373;
+  --bg: #fff;
+  --primary: #0c0c0f;
+  --secondary: #525252;
+  --tertiary: #a3a3a3;
   --accent: #3b82f6;
-  --border: #262626;
-  --viewer-overlay: rgb(0 0 0 / 55%);
+  --border: #e5e5e5;
+  --viewer-overlay: rgb(0 0 0 / 25%);
 }
 .dark {
   --bg: #0c0c0f;

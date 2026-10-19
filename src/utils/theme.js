@@ -4,12 +4,12 @@ const VALID_THEMES = new Set(["system", "light", "dark"]);
 export function getStoredTheme() {
   try {
     const theme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return VALID_THEMES.has(theme) ? theme : "system";
+    return VALID_THEMES.has(theme) ? theme : "light";
   } catch {
-    // Theme switching still works when browser storage is unavailable.
-    return "system";
+    return "light";
   }
 }
+
 
 export function saveTheme(theme) {
   try {
