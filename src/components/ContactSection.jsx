@@ -22,7 +22,7 @@ export default function ContactSection() {
         viewport={{ once: true, amount: 0.1 }}
         custom={0.08}
         variants={fadeInVariants}
-        className="relative overflow-hidden rounded-xl border border-border p-8 md:p-10 mt-8 text-center md:text-left"
+        className="contact-neon-card relative overflow-hidden rounded-xl border border-border p-8 md:p-10 mt-8 text-center md:text-left"
         style={{ "--glow-opacity": 0 }}
       >
         {/* Animated Radial Glow Background */}

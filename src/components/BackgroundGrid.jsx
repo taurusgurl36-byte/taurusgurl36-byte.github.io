@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 const CELL_SIZE_DESKTOP = 48;
 const CELL_SIZE_MOBILE = 36;
 const MOBILE_BREAKPOINT = 640;
-const HEIGHT_RATIO = 0.5;
 const MAX_RADIUS = 14;
 const WAVE_DELAY = 55;
 const DURATION = 500;
@@ -12,7 +11,6 @@ const PEAK_OPACITY = 32;
 const FALLOFF = 1.8;
 const HOVER_OPACITY = 16;
 const HOVER_DURATION = 900;
-const MASK_GRADIENT = "linear-gradient(to bottom, #000 50%, transparent 100%)";
 
 function getAccentColor(opacityPercent) {
   return `color-mix(in srgb, var(--accent) ${opacityPercent}%, transparent)`;
@@ -21,6 +19,7 @@ function getAccentColor(opacityPercent) {
 export default function BackgroundGrid({ children }) {
   const containerRef = useRef(null);
   const gridRef = useRef(null);
+
   const [dimensions, setDimensions] = useState({
     size: CELL_SIZE_DESKTOP,
     cols: 0,
@@ -41,10 +40,12 @@ export default function BackgroundGrid({ children }) {
       let cols = Math.ceil(clientWidth / size) + 1;
       if (cols % 2 === 0) cols += 1;
 
-      const rows = Math.ceil((clientHeight * HEIGHT_RATIO) / size);
+      const rows = Math.ceil(clientHeight / size);
 
       setDimensions((prev) =>
-        prev.size === size && prev.cols === cols && prev.rows === rows
+        prev.size === size &&
+        prev.cols === cols &&
+        prev.rows === rows
           ? prev
           : { size, cols, rows }
       );
@@ -67,7 +68,10 @@ export default function BackgroundGrid({ children }) {
       const col = Math.floor((e.clientX - rect.left) / size);
       const row = Math.floor((e.clientY - rect.top) / size);
 
-      if (col < 0 || col >= cols || row < 0 || row >= rows) return null;
+      if (col < 0 || col >= cols || row < 0 || row >= rows) {
+        return null;
+      }
+
       return { row, col };
     }
 
@@ -93,7 +97,10 @@ export default function BackgroundGrid({ children }) {
             cells[cellIndex].animate(
               [
                 { backgroundColor: getAccentColor(0) },
-                { backgroundColor: getAccentColor(opacity), offset: 0.35 },
+                {
+                  backgroundColor: getAccentColor(opacity),
+                  offset: 0.35,
+                },
                 { backgroundColor: getAccentColor(0) },
               ],
               { duration: DURATION, delay: dist * WAVE_DELAY }
@@ -138,7 +145,26 @@ export default function BackgroundGrid({ children }) {
       ref={containerRef}
       className="relative isolate w-full overflow-hidden"
       style={{
-        backgroundImage: "url('/jasmenportfolio/assets/background.jpg')",
+        minHeight: "100vh",
+        backgroundColor: "#160824",
+        backgroundImage: `
+          radial-gradient(
+            ellipse at 15% 15%,
+            rgba(126, 34, 206, 0.42),
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 85% 40%,
+            rgba(88, 28, 135, 0.35),
+            transparent 50%
+          ),
+          linear-gradient(
+            135deg,
+            #160824 0%,
+            #24103b 50%,
+            #160824 100%
+          )
+        `,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -147,23 +173,31 @@ export default function BackgroundGrid({ children }) {
       <div
         ref={gridRef}
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -z-10 -translate-x-1/2"
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2"
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${dimensions.cols}, ${dimensions.size}px)`,
           gridAutoRows: `${dimensions.size}px`,
-          maskImage: MASK_GRADIENT,
-          WebkitMaskImage: MASK_GRADIENT,
+          maskImage: "linear-gradient(to bottom, #000 50%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, #000 50%, transparent 100%)",
         }}
       >
         {Array.from(
           { length: dimensions.cols * dimensions.rows },
           (_, i) => (
-            <div key={i} className="border-r border-b opacity-40" />
+            <div
+              key={i}
+              className="border-r border-b opacity-40"
+              style={{ borderColor: "rgba(167, 139, 250, 0.22)" }}
+            />
           )
         )}
       </div>
-      {children}
+
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 }

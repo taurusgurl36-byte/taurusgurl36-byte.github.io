@@ -12,14 +12,20 @@ export function SectionHeader({ number, label, action }) {
       viewport={{ once: true, amount: 0.1 }}
       custom={0}
       variants={fadeInVariants}
-      className={`flex items-center ${
-        action ? "justify-between" : "gap-2"
-      } text-xs text-text-faint`}
+      className={`section-neon-heading flex items-center ${
+  action ? "justify-between" : "gap-2"
+} text-xs text-text-faint`}
     >
-      <div className="inline-flex items-center gap-2">
-        <span className="rounded-md border border-border px-1.5 py-0.5 text-[11px]">{number}</span>
-        <span className="tracking-wider uppercase">{label}</span>
-      </div>
+      
+<div className="inline-flex items-center gap-2">
+  <span className="section-neon-number rounded-md px-1.5 py-0.5 text-[11px]">
+    {number}
+  </span>
+  <span className="section-neon-label tracking-wider uppercase">
+    {label}
+  </span>
+</div>
+
 
       {action && (
         <Link
@@ -84,3 +90,4 @@ export function PageHeader({ title, description, backTo = "/", className }) {
     </motion.div>
   );
 }
+

@@ -4,9 +4,7 @@ import { fadeInVariants } from "../animations/variants";
 export default function ExperienceTimeline({ items, staggerDelay = 0.08, showMeta = false }) {
   return (
     <div className="relative mt-8">
-      {/* Timeline track line */}
-      <div className="absolute left-[5.5px] top-1.5 bottom-1.5 w-px bg-border" />
-
+      
       <div className="space-y-7">
         {items.map((item, idx) => (
           <motion.div

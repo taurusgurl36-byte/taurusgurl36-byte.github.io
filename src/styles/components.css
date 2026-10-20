@@ -517,3 +517,762 @@ html:not(.dark) .app-content .profile-social-link {
 html:not(.dark) .app-content .project-tags {
   color: #111111;
 }
+
+/* =========================================
+   PURPLE NEON: FOUR-COLOR PROJECT CARDS
+   ========================================= */
+
+html.dark .app-content .projects-grid .project-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid transparent !important;
+  border-radius: 18px;
+  background:
+    linear-gradient(#0d0717, #0d0717) padding-box,
+    linear-gradient(
+      135deg,
+      #38bdf8 0%,
+      #a78bfa 33%,
+      #f472b6 66%,
+      #34d399 100%
+    ) border-box;
+  transition:
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+/* Four-color neon glow on hover */
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .projects-grid .project-card:hover {
+    box-shadow:
+      0 0 8px rgba(56, 189, 248, 0.45),
+      0 0 18px rgba(167, 139, 250, 0.4),
+      0 0 28px rgba(244, 114, 182, 0.3),
+      0 0 38px rgba(52, 211, 153, 0.18);
+    transform: translateY(-5px);
+  }
+}
+
+html.dark .app-content .projects-grid .project-card[data-pressed="true"] {
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.4),
+    0 0 22px rgba(167, 139, 250, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .projects-grid .project-card {
+    transition: none;
+  }
+
+  html.dark .app-content .projects-grid .project-card:hover {
+    transform: none;
+  }
+}
+
+/* PURPLE NEON FUTURISTIC HERO */
+html.dark .app-content .neon-hero {
+  position: relative;
+  max-width: 960px;
+  padding-top: 72px;
+  padding-bottom: 64px;
+  isolation: isolate;
+}
+
+html.dark .app-content .neon-hero::before {
+  content: none;
+}
+
+
+html.dark .app-content .neon-hero-heading {
+  align-items: center;
+  gap: 28px;
+}
+
+html.dark .app-content .neon-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: #c4b5fd;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+html.dark .app-content .neon-hero .profile-identity h1 {
+  color: #fff;
+  text-shadow: 0 0 22px rgba(167, 139, 250, 0.3);
+}
+
+html.dark .app-content .neon-role {
+  color: #c4b5fd;
+}
+
+html.dark .app-content .neon-avatar-frame {
+  flex-shrink: 0;
+  padding: 5px;
+  border: 1px solid #a78bfa;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #a78bfa, #f472b6);
+  box-shadow:
+    0 0 15px rgba(167, 139, 250, 0.45),
+    0 0 35px rgba(124, 58, 237, 0.2);
+}
+
+html.dark .app-content .neon-avatar-frame .profile-avatar {
+  display: block;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+html.dark .app-content .neon-details {
+  gap: 16px;
+  margin-top: 24px;
+}
+
+html.dark .app-content .neon-details > div {
+  padding: 14px 16px;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  border-radius: 14px;
+  background: rgba(20, 11, 37, 0.72);
+}
+
+html.dark .app-content .neon-details dt {
+  color: #a78bfa;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+html.dark .app-content .neon-details dd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-wrap: anywhere;
+}
+
+html.dark .app-content .neon-details dd svg {
+  flex-shrink: 0;
+  color: #c4b5fd;
+}
+
+html.dark .app-content .neon-bio {
+  margin-top: 24px;
+  color: #d8d0e8;
+  line-height: 1.85;
+}
+
+html.dark .app-content .neon-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+html.dark .app-content .neon-profile-links .profile-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.12);
+  color: #f3eaff;
+  text-decoration: none;
+  transition: border-color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+html.dark .app-content .neon-profile-links .profile-social-link:hover {
+  border-color: #c4b5fd;
+  background: rgba(124, 58, 237, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(167, 139, 250, 0.18);
+}
+
+@media (max-width: 640px) {
+  html.dark .app-content .neon-hero {
+    padding-top: 42px;
+    padding-bottom: 40px;
+  }
+
+  html.dark .app-content .neon-hero::before {
+    inset: 18px 8px;
+    border-radius: 22px;
+  }
+
+  html.dark .app-content .neon-hero-heading {
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  html.dark .app-content .neon-avatar-frame .profile-avatar {
+    width: 88px;
+    height: 88px;
+  }
+
+  html.dark .app-content .neon-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  html.dark .app-content .neon-profile-links .profile-social-link {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .neon-profile-links .profile-social-link {
+    transition: none;
+  }
+}
+
+/* PURPLE NEON STYLE FOR ALL PORTFOLIO SECTIONS */
+
+html.dark .app-content section {
+  scroll-margin-top: 80px;
+}
+
+/* Section headings */
+html.dark .app-content section h2,
+html.dark .app-content section h3 {
+  text-shadow: 0 0 14px rgba(167, 139, 250, 0.14);
+}
+
+/* Project, experience, skill and certification cards */
+html.dark .app-content .project-card,
+html.dark .app-content .experience-card,
+html.dark .app-content .tech-stack-card,
+html.dark .app-content .certification-card {
+  border-color: rgba(167, 139, 250, 0.25);
+  transition: border-color 200ms ease, box-shadow 200ms ease,
+    transform 200ms ease;
+}
+
+/* Subtle purple hover glow */
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .project-card:hover,
+  html.dark .app-content .experience-card:hover,
+  html.dark .app-content .tech-stack-card:hover,
+  html.dark .app-content .certification-card:hover {
+    border-color: rgba(196, 181, 253, 0.65);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+  }
+}
+
+/* Links throughout the portfolio */
+html.dark .app-content a:focus-visible,
+html.dark .app-content button:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .project-card,
+  html.dark .app-content .experience-card,
+  html.dark .app-content .tech-stack-card,
+  html.dark .app-content .certification-card {
+    transition: none;
+  }
+}
+
+/* PURPLE NEON PROJECT CARD POLISH */
+
+html.dark .app-content .project-card {
+  border-color: rgba(167, 139, 250, 0.3);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(25, 13, 43, 0.98), rgba(11, 6, 20, 0.98));
+  box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.06);
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+/* Project preview image */
+html.dark .app-content .project-card .project-photo {
+  border-color: rgba(167, 139, 250, 0.25);
+  background-color: rgba(124, 58, 237, 0.08);
+}
+
+html.dark .app-content .project-card .project-photo img {
+  transition: transform 350ms ease, filter 350ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .project-card:hover .project-photo img {
+    transform: scale(1.035);
+  }
+
+  html.dark .app-content .project-card:hover {
+    border-color: rgba(196, 181, 253, 0.7);
+    box-shadow:
+      0 0 12px rgba(124, 58, 237, 0.2),
+      0 0 28px rgba(167, 139, 250, 0.12),
+      inset 0 1px 0 rgba(196, 181, 253, 0.08);
+  }
+}
+
+/* Project title */
+html.dark .app-content .project-card h3 {
+  color: #f3e8ff;
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.12);
+}
+
+/* Project role */
+html.dark .app-content .project-card .project-role {
+  color: #c4b5fd;
+}
+
+/* Technology tags */
+html.dark .app-content .project-card .project-tags > span {
+  border-color: rgba(167, 139, 250, 0.28);
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+html.dark .app-content .project-card .project-tags svg {
+  color: #c4b5fd;
+}
+
+/* Project footer */
+html.dark .app-content .project-card .project-card-footer {
+  border-color: rgba(167, 139, 250, 0.22);
+}
+
+html.dark .app-content .project-card .project-card-footer button:hover {
+  color: #d8b4fe;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .project-card,
+  html.dark .app-content .project-card .project-photo img {
+    transition: none;
+  }
+
+  html.dark .app-content .project-card:hover .project-photo img {
+    transform: none;
+  }
+}
+
+/* PURPLE NEON SKILLS SECTION */
+
+html.dark .app-content .skill-neon-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(124, 58, 237, 0.14),
+      transparent 48%
+    ),
+    linear-gradient(145deg, rgba(25, 13, 43, 0.96), rgba(11, 6, 20, 0.96));
+  box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.05);
+  transition: border-color 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .skill-neon-card:hover {
+    border-color: rgba(196, 181, 253, 0.65);
+    box-shadow:
+      0 0 18px rgba(124, 58, 237, 0.16),
+      0 0 30px rgba(167, 139, 250, 0.08);
+    transform: translateY(-3px);
+  }
+}
+
+html.dark .app-content .skill-neon-title {
+  color: #d8b4fe;
+  letter-spacing: 0.16em;
+}
+
+html.dark .app-content .skill-neon-card .skill-item {
+  border-color: rgba(167, 139, 250, 0.18);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+html.dark .app-content .skill-neon-card .skill-item:hover {
+  border-color: rgba(196, 181, 253, 0.5);
+  background-color: rgba(124, 58, 237, 0.1);
+}
+
+html.dark .app-content .skill-neon-card .skill-label {
+  color: #eee7ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .skill-neon-card,
+  html.dark .app-content .skill-neon-card .skill-item {
+    transition: none;
+  }
+
+  html.dark .app-content .skill-neon-card:hover {
+    transform: none;
+  }
+}
+
+/* PURPLE NEON EXPERIENCE & EDUCATION TIMELINE */
+
+html.dark .app-content .timeline-neon-item {
+  padding: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.18);
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.09), transparent 70%),
+    rgba(16, 9, 29, 0.72);
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    background-color 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .timeline-neon-item:hover {
+    border-color: rgba(196, 181, 253, 0.5);
+    box-shadow: 0 0 18px rgba(124, 58, 237, 0.12);
+  }
+}
+
+html.dark .app-content .timeline-neon-dot {
+  border-color: #a78bfa;
+  box-shadow: 0 0 9px rgba(167, 139, 250, 0.35);
+}
+
+html.dark .app-content .timeline-neon-dot.is-active {
+  background: #c084fc;
+  border-color: #c084fc;
+  box-shadow:
+    0 0 8px rgba(192, 132, 252, 0.75),
+    0 0 18px rgba(124, 58, 237, 0.4);
+}
+
+html.dark .app-content .timeline-neon-year {
+  border-color: rgba(167, 139, 250, 0.35);
+  background: rgba(124, 58, 237, 0.12);
+  color: #d8b4fe;
+}
+
+html.dark .app-content .timeline-neon-item h3 {
+  color: #f3e8ff;
+}
+
+html.dark .app-content .timeline-neon-item .timeline-neon-meta {
+  color: #c4b5fd;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .timeline-neon-item {
+    transition: none;
+  }
+}
+
+/* PURPLE NEON CERTIFICATION CARDS */
+
+html.dark .app-content .certificate-card {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(167, 139, 250, 0.28);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(124, 58, 237, 0.14),
+      transparent 48%
+    ),
+    linear-gradient(145deg, rgba(25, 13, 43, 0.97), rgba(11, 6, 20, 0.97));
+  box-shadow: inset 0 1px 0 rgba(196, 181, 253, 0.05);
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .certificate-card:not(:disabled):hover {
+    border-color: rgba(196, 181, 253, 0.7);
+    box-shadow:
+      0 0 14px rgba(124, 58, 237, 0.2),
+      0 0 28px rgba(167, 139, 250, 0.1);
+    transform: translateY(-3px);
+  }
+}
+
+html.dark .app-content .certificate-card h3 {
+  color: #f3e8ff;
+}
+
+html.dark .app-content .certificate-card .certificate-photo-frame {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+html.dark .app-content .certificate-card .certificate-photo {
+  transition: transform 350ms ease;
+}
+
+html.dark .app-content .certificate-card .group-hover\:border-accent {
+  border-color: rgba(196, 181, 253, 0.55);
+}
+
+html.dark .app-content .certificate-card svg {
+  transition: color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .certificate-card,
+  html.dark .app-content .certificate-card .certificate-photo {
+    transition: none;
+  }
+
+  html.dark .app-content .certificate-card:not(:disabled):hover {
+    transform: none;
+  }
+}
+
+/* PURPLE NEON CONTACT SECTION */
+
+html.dark .app-content .contact-neon-card {
+  position: relative;
+  border: 1px solid rgba(167, 139, 250, 0.38);
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(124, 58, 237, 0.2),
+      transparent 65%
+    ),
+    linear-gradient(145deg, rgba(25, 13, 43, 0.98), rgba(11, 6, 20, 0.98));
+  box-shadow:
+    0 0 20px rgba(124, 58, 237, 0.08),
+    inset 0 1px 0 rgba(196, 181, 253, 0.08);
+  transition: border-color 250ms ease, box-shadow 250ms ease;
+}
+
+html.dark .app-content .contact-neon-card h3 {
+  color: #f3e8ff;
+  text-shadow: 0 0 18px rgba(167, 139, 250, 0.18);
+}
+
+html.dark .app-content .contact-neon-card .contact-neon-button {
+  border: 1px solid rgba(216, 180, 254, 0.5);
+  background: linear-gradient(135deg, #7c3aed, #9333ea);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.22);
+  overflow-wrap: anywhere;
+}
+
+html.dark .app-content .contact-neon-card .contact-neon-button:hover {
+  box-shadow:
+    0 0 18px rgba(168, 85, 247, 0.45),
+    0 0 30px rgba(124, 58, 237, 0.2);
+}
+
+html.dark .app-content .contact-neon-card a:not(.contact-neon-button):hover {
+  color: #d8b4fe;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.dark .app-content .contact-neon-card {
+    transition: none;
+  }
+}
+
+/* =========================================
+   MATCH PORTFOLIO OUTLINES TO PROJECTS
+   ========================================= */
+
+html.dark .app-content .projects-grid .project-card,
+html.dark .app-content .experience-card,
+html.dark .app-content .tech-stack-card,
+html.dark .app-content .certification-card,
+html.dark .app-content .skill-neon-card,
+html.dark .app-content .timeline-neon-item,
+html.dark .app-content .certificate-card,
+html.dark .app-content .contact-neon-card {
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 18px;
+  box-sizing: border-box;
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+/* Consistent purple neon hover effect */
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .experience-card:hover,
+  html.dark .app-content .tech-stack-card:hover,
+  html.dark .app-content .certification-card:hover,
+  html.dark .app-content .skill-neon-card:hover,
+  html.dark .app-content .timeline-neon-item:hover,
+  html.dark .app-content .certificate-card:hover,
+  html.dark .app-content .contact-neon-card:hover {
+    border-color: rgba(196, 181, 253, 0.7);
+    box-shadow:
+      0 0 12px rgba(124, 58, 237, 0.2),
+      0 0 28px rgba(167, 139, 250, 0.12);
+  }
+}
+
+/* Consistent Projects outline */
+html.dark .app-content .projects-grid .project-card {
+  border-radius: 18px;
+}
+
+/* Consistent purple neon outline for skills */
+html.dark .app-content .skill-neon-card {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* Consistent purple neon outline for experience and education */
+html.dark .app-content .timeline-neon-item {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* Consistent purple neon outline for certifications */
+html.dark .app-content .certificate-card {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* Consistent purple neon outline for Get in Touch */
+html.dark .app-content .contact-neon-card {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+/* =========================================
+   SAME PURPLE OUTLINE AS PROJECT CARDS
+   ========================================= */
+
+html.dark .app-content * {
+  --portfolio-outline-color: rgba(167, 139, 250, 0.3);
+}
+
+/* Cards and section boxes */
+html.dark .app-content .project-card,
+html.dark .app-content .experience-card,
+html.dark .app-content .tech-stack-card,
+html.dark .app-content .certification-card,
+html.dark .app-content .skill-neon-card,
+html.dark .app-content .timeline-neon-item,
+html.dark .app-content .certificate-card,
+html.dark .app-content .contact-neon-card,
+html.dark .app-content .profile-social-link,
+html.dark .app-content .neon-details > div,
+html.dark .app-content .neon-avatar-frame,
+html.dark .app-content .certificate-photo-frame,
+html.dark .app-content .project-photo,
+html.dark .app-content .resume-page-canvas {
+  border-color: var(--portfolio-outline-color) !important;
+}
+
+/* Same purple color when hovering */
+@media (hover: hover) and (pointer: fine) {
+  html.dark .app-content .project-card:hover,
+  html.dark .app-content .experience-card:hover,
+  html.dark .app-content .tech-stack-card:hover,
+  html.dark .app-content .certification-card:hover,
+  html.dark .app-content .skill-neon-card:hover,
+  html.dark .app-content .timeline-neon-item:hover,
+  html.dark .app-content .certificate-card:hover,
+  html.dark .app-content .contact-neon-card:hover,
+  html.dark .app-content .profile-social-link:hover {
+    border-color: rgba(167, 139, 250, 0.7) !important;
+  }
+}
+
+/* MATCH OTHER CARD OUTLINES TO PROJECTS */
+html.dark .app-content .experience-card,
+html.dark .app-content .tech-stack-card,
+html.dark .app-content .certification-card,
+html.dark .app-content .skill-neon-card,
+html.dark .app-content .timeline-neon-item,
+html.dark .app-content .certificate-card,
+html.dark .app-content .contact-neon-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid transparent !important;
+  border-radius: 18px;
+}
+
+html.dark .app-content .experience-card::before,
+html.dark .app-content .tech-stack-card::before,
+html.dark .app-content .certification-card::before,
+html.dark .app-content .skill-neon-card::before,
+html.dark .app-content .timeline-neon-item::before,
+html.dark .app-content .certificate-card::before,
+html.dark .app-content .contact-neon-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    #38bdf8 0%,
+    #a78bfa 33%,
+    #f472b6 66%,
+    #34d399 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* FIX: Remove unwanted timeline lines */
+html.dark .app-content .timeline-neon-item::after {
+  display: none !important;
+  content: none !important;
+}
+
+html.dark .app-content .timeline-neon-item {
+  border-left: none !important;
+  border-bottom: none !important;
+}
+
+/* Keep the gradient outline of timeline cards */
+html.dark .app-content .timeline-neon-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    #38bdf8 0%,
+    #a78bfa 33%,
+    #f472b6 66%,
+    #34d399 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* REMOVE THE VERTICAL TIMELINE LINE */
+html.dark .app-content .timeline-neon-item::after {
+  display: none !important;
+}
+
+/* REMOVE TIMELINE CONNECTOR LINES */
+html.dark .app-content .timeline-neon-dot::before,
+html.dark .app-content .timeline-neon-dot::after {
+  display: none !important;
+}
+
+/* KEEP THE CARD OUTLINE */
+html.dark .app-content .timeline-neon-item {
+  border-left: 1px solid transparent !important;
+  border-bottom: 1px solid transparent !important;
+}

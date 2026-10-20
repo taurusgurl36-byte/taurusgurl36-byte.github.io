@@ -13,9 +13,9 @@ export default function TechStack({ groups, staggerDelay = 0.08 }) {
           viewport={{ once: true, amount: 0.1 }}
           custom={idx * staggerDelay}
           variants={fadeInVariants}
-          className="rounded-xl border border-border p-5"
+          className="skill-neon-card rounded-xl border border-border p-5"
         >
-          <h3 className="text-xs text-text-faint tracking-wider uppercase">{group.category}</h3>
+          <h3 className="skill-neon-title text-xs text-text-faint tracking-wider uppercase">{group.category}</h3>
           <ul className="skill-list">
             {group.tools.map((tool) => (
               <li key={tool} className="skill-item">

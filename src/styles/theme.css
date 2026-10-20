@@ -1,22 +1,29 @@
 
 :root {
-  --bg: #ffffff;
-  --primary: #000000;
-  --secondary: #0a0a0a;
-  --tertiary: #1f1f1f;
-  --accent: #2563eb;
-  --border: #c7c7c7;
-  --viewer-overlay: rgb(0 0 0 / 30%);
+  --bg: #0b0614;
+  --primary: #ffffff;
+  --secondary: #eee7ff;
+  --tertiary: #c4b5fd;
+  --accent: #a78bfa;
+  --border: #49316f;
+  --viewer-overlay: rgb(10 3 24 / 65%);
 }
 
-.dark {
-  --bg: #0c0c0f;
-  --primary: #ffffff;
-  --secondary: #eeeeee;
-  --tertiary: #c4c4c4;
-  --accent: #3b82f6;
-  --border: #262626;
-  --viewer-overlay: rgb(0 0 0 / 55%);
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: #0b0614;
+}
+
+html {
+  background-color: #0b0614;
+  color-scheme: dark;
+}
+
+body {
+  color: #ffffff;
 }
 
 .no-scrollbar {
@@ -28,14 +35,30 @@
   display: none;
 }
 
-/* Animated video backgrounds */
+/* Full-page dark purple background */
 .video-background {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: var(--bg);
+  background:
+    radial-gradient(
+      ellipse at 15% 15%,
+      #3b1768 0%,
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 85% 65%,
+      #29104a 0%,
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #0b0614 0%,
+      #160b2b 50%,
+      #0b0614 100%
+    );
 }
 
 .video-background video {
@@ -59,10 +82,19 @@ html.dark .video-background .dark-video {
   display: block;
 }
 
+html.dark .video-background {
+  background-color: #0b0614;
+}
+
+html.dark .video-background video {
+  filter: saturate(1.12) hue-rotate(12deg);
+}
+
 .app-content {
   position: relative;
   z-index: 1;
   min-height: 100vh;
+  background: transparent;
 }
 
 /* Theme transition */
@@ -80,43 +112,71 @@ html.dark .video-background .dark-video {
 
 @keyframes circle-reveal {
   0% {
-    clip-path: circle(
-      0px at var(--reveal-x, 50%) var(--reveal-y, 50%)
-    );
+    clip-path: circle(0px at var(--reveal-x, 50%) var(--reveal-y, 50%));
   }
 
   70% {
     clip-path: circle(
       calc(var(--reveal-radius, 150%) * 0.7)
-        at var(--reveal-x, 50%) var(--reveal-y, 50%)
+      at var(--reveal-x, 50%) var(--reveal-y, 50%)
     );
   }
 
   75% {
     clip-path: circle(
       calc(var(--reveal-radius, 150%) * 0.715)
-        at var(--reveal-x, 50%) var(--reveal-y, 50%)
+      at var(--reveal-x, 50%) var(--reveal-y, 50%)
     );
   }
 
   80% {
     clip-path: circle(
       calc(var(--reveal-radius, 150%) * 0.73)
-        at var(--reveal-x, 50%) var(--reveal-y, 50%)
+      at var(--reveal-x, 50%) var(--reveal-y, 50%)
     );
   }
 
   90% {
     clip-path: circle(
       calc(var(--reveal-radius, 150%) * 0.85)
-        at var(--reveal-x, 50%) var(--reveal-y, 50%)
+      at var(--reveal-x, 50%) var(--reveal-y, 50%)
     );
   }
 
   to {
     clip-path: circle(
       var(--reveal-radius, 150%)
-        at var(--reveal-x, 50%) var(--reveal-y, 50%)
+      at var(--reveal-x, 50%) var(--reveal-y, 50%)
     );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@keyframes neon-ripple {
+  0% {
+    width: 24px;
+    height: 24px;
+    opacity: 1;
+  }
+
+  100% {
+    width: 280px;
+    height: 280px;
+    opacity: 0;
+  }
+}
+
+@keyframes neon-grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 48px 48px;
   }
 }

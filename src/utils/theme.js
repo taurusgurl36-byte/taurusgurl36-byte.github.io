@@ -1,31 +1,23 @@
+
 const THEME_STORAGE_KEY = "theme";
-const VALID_THEMES = new Set(["system", "light", "dark"]);
 
 export function getStoredTheme() {
+  return "dark";
+}
+
+export function saveTheme() {
   try {
-    const theme = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return VALID_THEMES.has(theme) ? theme : "light";
+    window.localStorage.setItem(THEME_STORAGE_KEY, "dark");
   } catch {
-    return "light";
+    // Dark mode remains active for this session.
   }
 }
 
-
-export function saveTheme(theme) {
-  try {
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  } catch {
-    // Keep the selected theme for this session even if it cannot be saved.
-  }
+export function isDarkTheme() {
+  return true;
 }
 
-export function isDarkTheme(theme) {
-  return (
-    theme === "dark" ||
-    (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  );
-}
-
-export function applyTheme(theme) {
-  document.documentElement.classList.toggle("dark", isDarkTheme(theme));
+export function applyTheme() {
+  document.documentElement.classList.add("dark");
+  document.documentElement.style.colorScheme = "dark";
 }
