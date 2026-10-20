@@ -1,4 +1,4 @@
-import ThemeToggle from "./ThemeToggle";
+
 import { personalInfo } from "../data/portfolioData";
 
 export default function Footer() {
@@ -16,6 +16,7 @@ export default function Footer() {
             height={40}
             className="size-10 shrink-0 rounded-full object-cover dark:hidden"
           />
+
           <img
             src={personalInfo.avatarDark}
             alt={personalInfo.name}
@@ -23,19 +24,21 @@ export default function Footer() {
             height={40}
             className="size-10 shrink-0 rounded-full object-cover hidden dark:block"
           />
+
           <div>
-            <h3 className="text-sm font-medium text-text">{personalInfo.name}</h3>
-            <p className="text-text-muted text-xs mt-1">{personalInfo.title}</p>
+            <h3 className="text-sm font-medium text-text">
+              {personalInfo.name}
+            </h3>
+            <p className="text-text-muted text-xs mt-1">
+              {personalInfo.title}
+            </p>
           </div>
         </div>
 
-        {/* Right Side: Theme Switcher & Desktop Copyright */}
-        <div className="flex flex-col items-end gap-2">
-          <ThemeToggle />
-          <p className="hidden md:block text-text-faint text-xs">
-            © {currentYear} {personalInfo.name}. All rights reserved.
-          </p>
-        </div>
+        {/* Desktop Copyright */}
+        <p className="hidden md:block text-text-faint text-xs">
+          © {currentYear} {personalInfo.name}. All rights reserved.
+        </p>
       </div>
 
       {/* Mobile Copyright */}

@@ -1276,3 +1276,50 @@ html.dark .app-content .timeline-neon-item {
   border-left: 1px solid transparent !important;
   border-bottom: 1px solid transparent !important;
 }
+/* REMOVE BOTTOM BORDER UNDER PROJECTS */
+html.dark .app-content #projects {
+  border-bottom: none !important;
+}
+
+html.dark .app-content #projects::before,
+html.dark .app-content #projects::after {
+  content: none !important;
+  display: none !important;
+}
+/* FIX: Remove unwanted dark divider above Projects */
+html.dark .app-content section {
+  border-bottom: none;
+}
+
+/* Keep the project cards' neon outlines */
+html.dark .app-content .projects-grid .project-card {
+  border: 1px solid transparent !important;
+  border-radius: 18px;
+}
+/* FIX: REMOVE UNWANTED LINE AROUND PROJECTS */
+html.dark .app-content #projects,
+html.dark .app-content #projects::before,
+html.dark .app-content #projects::after {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* Remove divider from elements immediately around Projects */
+html.dark .app-content #projects + section,
+html.dark .app-content section:has(+ #projects) {
+  border: none !important;
+  box-shadow: none !important;
+}
+/* REMOVE DIVIDER BELOW PROJECTS */
+html.dark #projects {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+html.dark #projects hr,
+html.dark #projects .border-b {
+  display: none !important;
+}
